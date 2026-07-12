@@ -1,19 +1,19 @@
 #include <iostream>
 #include "raylib.h"
+#include "Game/Game.h"
+
+Game* game = nullptr;
 
 int main() {
-    InitWindow(1280, 720, "Raylib Game Template");
-    SetTargetFPS(60);
-    std::cout << "Window Loaded!" << std::endl;
+    game = new Game(1280, 720, "2048", 60);
+    game->init();
 
-    while (!WindowShouldClose()) {
+    while (game->isRunning()) {
+        game->update();
+
         BeginDrawing();
-        ClearBackground(RAYWHITE);
-
-        const auto text_width = MeasureText("Hello, World!", 40);
-        DrawText("Hello, World!",
-            GetScreenWidth() / 2 - text_width / 2, GetScreenHeight() / 2 - 20, 40, BLACK);
-
+            ClearBackground(BLACK);
+            game->render();
         EndDrawing();
     }
 
