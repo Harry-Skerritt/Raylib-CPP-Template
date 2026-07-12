@@ -15,6 +15,10 @@ FetchContent_Declare(
 set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(raylib)
 
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME}
+        main.cpp
+        Game/Game.h
+        Game/Game.cpp
+)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
