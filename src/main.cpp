@@ -12,7 +12,7 @@ int main() {
         game->update();
 
         BeginDrawing();
-            ClearBackground(BLACK);
+            ClearBackground(RAYWHITE);
             game->render();
         EndDrawing();
     }

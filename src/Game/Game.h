@@ -4,6 +4,7 @@
 
 #ifndef GAME_H
 #define GAME_H
+#include <raylib.h>
 
 class Game {
 public:
@@ -18,6 +19,8 @@ public:
 
 private:
     bool m_is_running = true;
+
+    Texture2D m_raylib_texture;
 };
 
 #endif //GAME_H
