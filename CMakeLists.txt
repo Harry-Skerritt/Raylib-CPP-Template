@@ -16,9 +16,14 @@ set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(raylib)
 
 add_executable(${PROJECT_NAME}
-        main.cpp
-        Game/Game.h
-        Game/Game.cpp
+        src/main.cpp
+        src/Game/Game.h
+        src/Game/Game.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
+
+add_custom_command(
+        TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/resources $<TARGET_FILE_DIR:${PROJECT_NAME}>/resources
+)
