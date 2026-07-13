@@ -6,12 +6,13 @@
 
 #ifndef SPLASH_H
 #define SPLASH_H
+#include "raylib.h"
 #include "../../Managers/SceneManager/Scene.h"
 
 
 class Splash : public Scene {
 public:
-    Splash(SceneManager& manager, GameContext& context);
+    Splash(SceneManager& manager, GameContext& context, Color bg = RAYWHITE, Color fg = BLACK);
     ~Splash() override;
 
     void update(float dt) override;
@@ -36,6 +37,9 @@ private:
     float alpha = 1.0f;
 
     bool transition_started = false;
+
+    Color background_colour = RAYWHITE;
+    Color foreground_colour = BLACK;
 };
 
 

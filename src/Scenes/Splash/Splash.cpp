@@ -8,12 +8,15 @@
 #include "../../Managers/SceneManager/SceneManager.h"
 #include "../GameScene/GameScene.h"
 
-Splash::Splash(SceneManager& manager, GameContext& context) : Scene(manager, context) {
+Splash::Splash(SceneManager& manager, GameContext& context, const Color bg, const Color fg) : Scene(manager, context) {
     logoPositionX = GetScreenWidth() / 2 - 128;
     logoPositionY = GetScreenHeight() / 2 - 128;
+    background_colour = bg;
+    foreground_colour = fg;
 }
 
-Splash::~Splash() = default;
+Splash::~Splash() {}
+
 
 void Splash::update(float dt) {
     if (state == 0)
@@ -71,39 +74,39 @@ void Splash::update(float dt) {
 }
 
 void Splash::render() {
-    ClearBackground(RAYWHITE);
+    ClearBackground(background_colour);
     if (state == 0)
     {
-        if ((framesCounter/15)%2) DrawRectangle(logoPositionX, logoPositionY, 16, 16, BLACK);
+        if ((framesCounter/15)%2) DrawRectangle(logoPositionX, logoPositionY, 16, 16, foreground_colour);
     }
     else if (state == 1)
     {
-        DrawRectangle(logoPositionX, logoPositionY, topSideRecWidth, 16, BLACK);
-        DrawRectangle(logoPositionX, logoPositionY, 16, leftSideRecHeight, BLACK);
+        DrawRectangle(logoPositionX, logoPositionY, topSideRecWidth, 16, foreground_colour);
+        DrawRectangle(logoPositionX, logoPositionY, 16, leftSideRecHeight, foreground_colour);
     }
     else if (state == 2)
     {
-        DrawRectangle(logoPositionX, logoPositionY, topSideRecWidth, 16, BLACK);
-        DrawRectangle(logoPositionX, logoPositionY, 16, leftSideRecHeight, BLACK);
+        DrawRectangle(logoPositionX, logoPositionY, topSideRecWidth, 16, foreground_colour);
+        DrawRectangle(logoPositionX, logoPositionY, 16, leftSideRecHeight, foreground_colour);
 
-        DrawRectangle(logoPositionX + 240, logoPositionY, 16, rightSideRecHeight, BLACK);
-        DrawRectangle(logoPositionX, logoPositionY + 240, bottomSideRecWidth, 16, BLACK);
+        DrawRectangle(logoPositionX + 240, logoPositionY, 16, rightSideRecHeight, foreground_colour);
+        DrawRectangle(logoPositionX, logoPositionY + 240, bottomSideRecWidth, 16, foreground_colour);
     }
     else if (state == 3)
     {
-        DrawRectangle(logoPositionX, logoPositionY, topSideRecWidth, 16, Fade(BLACK, alpha));
-        DrawRectangle(logoPositionX, logoPositionY + 16, 16, leftSideRecHeight - 32, Fade(BLACK, alpha));
+        DrawRectangle(logoPositionX, logoPositionY, topSideRecWidth, 16, Fade(foreground_colour, alpha));
+        DrawRectangle(logoPositionX, logoPositionY + 16, 16, leftSideRecHeight - 32, Fade(foreground_colour, alpha));
 
-        DrawRectangle(logoPositionX + 240, logoPositionY + 16, 16, rightSideRecHeight - 32, Fade(BLACK, alpha));
-        DrawRectangle(logoPositionX, logoPositionY + 240, bottomSideRecWidth, 16, Fade(BLACK, alpha));
+        DrawRectangle(logoPositionX + 240, logoPositionY + 16, 16, rightSideRecHeight - 32, Fade(foreground_colour, alpha));
+        DrawRectangle(logoPositionX, logoPositionY + 240, bottomSideRecWidth, 16, Fade(foreground_colour, alpha));
 
-        DrawRectangle(GetScreenWidth()/2 - 112, GetScreenHeight()/2 - 112, 224, 224, Fade(RAYWHITE, alpha));
+        DrawRectangle(GetScreenWidth()/2 - 112, GetScreenHeight()/2 - 112, 224, 224, Fade(background_colour, alpha));
 
         for (int i = 0; i < lettersCount && i < 6; i++) {
             buffer[i] = "raylib"[i];
         }
 
-        DrawText(buffer, GetScreenWidth()/2 - 44, GetScreenHeight()/2 + 48, 50, Fade(BLACK, alpha));
+        DrawText(buffer, GetScreenWidth()/2 - 44, GetScreenHeight()/2 + 48, 50, Fade(foreground_colour, alpha));
     }
 }
 
