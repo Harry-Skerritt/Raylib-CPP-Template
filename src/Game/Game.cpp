@@ -7,6 +7,7 @@
 #include "raylib.h"
 #include "../Managers/AssetManager/AssetManager.h"
 #include "../Scenes/GameScene/GameScene.h"
+#include "../Scenes/Splash/Splash.h"
 
 Game::Game(const int window_width, const int window_height, const char *window_title, const int target_fps) {
     InitWindow(window_width, window_height, window_title);
@@ -20,7 +21,7 @@ Game::Game(const int window_width, const int window_height, const char *window_t
     loadMusic();
 
     // Load Initial Scene
-    m_scene_manager.setScene(std::make_unique<GameScene>(m_scene_manager));
+    m_scene_manager.setScene(std::make_unique<Splash>(m_scene_manager));
 }
 
 Game::~Game() {

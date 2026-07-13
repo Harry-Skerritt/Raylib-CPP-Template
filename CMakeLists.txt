@@ -26,6 +26,8 @@ add_executable(${PROJECT_NAME}
         src/Managers/SceneManager/SceneManager.h
         src/Managers/SceneManager/SceneManager.cpp
 
+        src/Scenes/Splash/Splash.h
+        src/Scenes/Splash/Splash.cpp
         src/Scenes/GameScene/GameScene.h
         src/Scenes/GameScene/GameScene.cpp
 )
