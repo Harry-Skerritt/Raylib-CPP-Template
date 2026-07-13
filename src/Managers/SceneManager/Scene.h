@@ -5,10 +5,11 @@
 #ifndef SCENE_H
 #define SCENE_H
 class SceneManager;
+class Game;
 
 class Scene {
 public:
-    explicit Scene(SceneManager& manager) : m_scene_manager(manager) {}
+    explicit Scene(SceneManager& manager, Game& game) : m_scene_manager(manager), m_game(game) {}
     virtual ~Scene() = default;
 
     virtual void update(float dt) = 0;
@@ -17,6 +18,7 @@ public:
 
 protected:
     SceneManager& m_scene_manager;
+    Game& m_game;
 
 };
 

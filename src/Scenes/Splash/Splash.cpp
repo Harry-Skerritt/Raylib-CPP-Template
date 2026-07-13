@@ -8,7 +8,7 @@
 #include "../../Managers/SceneManager/SceneManager.h"
 #include "../GameScene/GameScene.h"
 
-Splash::Splash(SceneManager& manager) : Scene(manager) {
+Splash::Splash(SceneManager& manager, Game& game) : Scene(manager, game) {
     logoPositionX = GetScreenWidth() / 2 - 128;
     logoPositionY = GetScreenHeight() / 2 - 128;
 }
@@ -64,7 +64,7 @@ void Splash::update(float dt) {
     else if (state == 4)
     {
         if (!transition_started) {
-            m_scene_manager.setScene(std::make_unique<GameScene>(m_scene_manager), TransitionType::FADE_TO_WHITE);
+            m_scene_manager.setScene(std::make_unique<GameScene>(m_scene_manager, m_game), TransitionType::FADE_TO_WHITE);
             transition_started = true;
         }
     }

@@ -3,9 +3,11 @@
 //
 
 #include "GameScene.h"
+
+#include "../../Game/Game.h"
 #include "../../Managers/AssetManager/AssetManager.h"
 
-GameScene::GameScene(SceneManager& manager) : Scene(manager) {
+GameScene::GameScene(SceneManager& manager, Game& game) : Scene(manager, game) {
     m_raylib_texture = AssetManager::GetTexture("raylib-logo");
 }
 

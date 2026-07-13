@@ -21,8 +21,8 @@ Game::Game(const int window_width, const int window_height, const char *window_t
     loadMusic();
 
     // Load Initial Scene
-    if (use_splash) m_scene_manager.setScene(std::make_unique<Splash>(m_scene_manager));
-    else  m_scene_manager.setScene(std::make_unique<GameScene>(m_scene_manager));
+    if (use_splash) m_scene_manager.setScene(std::make_unique<Splash>(m_scene_manager, *this));
+    else  m_scene_manager.setScene(std::make_unique<GameScene>(m_scene_manager, *this));
 }
 
 Game::~Game() {
@@ -31,7 +31,7 @@ Game::~Game() {
 
 
 void Game::init() {
-    std::cout << "Initializing Game ..." << std::endl;
+    std::cout << "[Game] Initializing Game ..." << std::endl;
 }
 
 void Game::update() {
@@ -51,18 +51,18 @@ void Game::renderUI() const {
 
 // Loaders
 void Game::loadTextures() {
-    std::cout << "Loading textures..." << std::endl;
+    std::cout << "[Game] Loading textures..." << std::endl;
     AssetManager::LoadTextureKey("raylib-logo", "resources/raylib.png");
 }
 
 void Game::loadFonts() {
-    std::cout << "Loading fonts ..." << std::endl;
+    std::cout << "[Game] Loading fonts ..." << std::endl;
 }
 
 void Game::loadSounds() {
-    std::cout << "Loading sounds..." << std::endl;
+    std::cout << "[Game] Loading sounds..." << std::endl;
 }
 
 void Game::loadMusic() {
-    std::cout << "Loading music..." << std::endl;
+    std::cout << "[Game] Loading music..." << std::endl;
 }

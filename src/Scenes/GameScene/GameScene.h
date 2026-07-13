@@ -11,7 +11,7 @@
 
 class GameScene : public Scene {
 public:
-    GameScene(SceneManager& manager);
+    GameScene(SceneManager& manager, Game& game);
     ~GameScene() override;
 
     void update(float dt) override;
