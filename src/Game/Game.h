@@ -9,7 +9,7 @@
 
 class Game {
 public:
-    Game(int window_width, int window_height, const char* window_title, int target_fps = 1000);
+    Game(int window_width, int window_height, const char* window_title, int target_fps = 1000, bool use_splash = true);
     ~Game();
 
     void init();

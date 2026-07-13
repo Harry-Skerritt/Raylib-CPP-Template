@@ -5,7 +5,7 @@
 Game* game = nullptr;
 
 int main() {
-    game = new Game(1280, 720, "Raylib Game", 60);
+    game = new Game(1280, 720, "Raylib Game", 60, true);
     game->init();
 
     while (game->isRunning()) {
