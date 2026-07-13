@@ -20,6 +20,7 @@ int main() {
     }
 
     CloseAudioDevice();
+    delete game;
     CloseWindow();
     return 0;
 }
