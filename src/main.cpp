@@ -14,9 +14,12 @@ int main() {
         BeginDrawing();
             ClearBackground(RAYWHITE);
             game->render();
+
+            game->renderUI();
         EndDrawing();
     }
 
+    CloseAudioDevice();
     CloseWindow();
     return 0;
 }

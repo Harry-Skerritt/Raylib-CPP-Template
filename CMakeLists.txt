@@ -19,6 +19,15 @@ add_executable(${PROJECT_NAME}
         src/main.cpp
         src/Game/Game.h
         src/Game/Game.cpp
+        src/Managers/AudioManager/AudioManager.h
+        src/Managers/AssetManager/AssetManager.h
+        src/Managers/AssetManager/AssetManager.cpp
+        src/Managers/SceneManager/Scene.h
+        src/Managers/SceneManager/SceneManager.h
+        src/Managers/SceneManager/SceneManager.cpp
+
+        src/Scenes/GameScene/GameScene.h
+        src/Scenes/GameScene/GameScene.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
