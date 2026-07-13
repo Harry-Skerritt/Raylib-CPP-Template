@@ -13,9 +13,12 @@ Splash::Splash(SceneManager& manager, GameContext& context, const Color bg, cons
     logoPositionY = GetScreenHeight() / 2 - 128;
     background_colour = bg;
     foreground_colour = fg;
+    SetTargetFPS(60);
 }
 
-Splash::~Splash() {}
+Splash::~Splash() {
+    SetTargetFPS(0);
+}
 
 
 void Splash::update(float dt) {
