@@ -4,9 +4,12 @@
 
 #ifndef ASSETMANAGER_H
 #define ASSETMANAGER_H
+#include <iostream>
+
 #include "raylib.h"
 #include <map>
 #include <string>
+#include <__ostream/basic_ostream.h>
 
 class AssetManager {
 private:
@@ -55,6 +58,7 @@ public:
 
 
     static void UnloadAll() {
+        std::cout << "[AssetManager] Unloading all assets..." << std::endl;
         for (auto& pair : fonts) {
             UnloadFont(pair.second);
         }

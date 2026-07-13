@@ -11,7 +11,7 @@
 
 class Splash : public Scene {
 public:
-    Splash(SceneManager& manager, Game& game);
+    Splash(SceneManager& manager, GameContext& context);
     ~Splash() override;
 
     void update(float dt) override;

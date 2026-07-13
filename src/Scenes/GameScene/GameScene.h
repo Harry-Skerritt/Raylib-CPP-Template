@@ -11,7 +11,7 @@
 
 class GameScene : public Scene {
 public:
-    GameScene(SceneManager& manager, Game& game);
+    GameScene(SceneManager& manager, GameContext& context);
     ~GameScene() override;
 
     void update(float dt) override;
@@ -19,7 +19,7 @@ public:
     void renderUI() override;
 
 private:
-    Texture2D m_raylib_texture;
+    Texture2D m_raylib_texture{};
 
 };
 

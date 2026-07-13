@@ -21,8 +21,8 @@ Game::Game(const int window_width, const int window_height, const char *window_t
     loadMusic();
 
     // Load Initial Scene
-    if (use_splash) m_scene_manager.setScene(std::make_unique<Splash>(m_scene_manager, *this));
-    else  m_scene_manager.setScene(std::make_unique<GameScene>(m_scene_manager, *this));
+    if (use_splash) m_scene_manager.setScene(std::make_unique<Splash>(m_scene_manager, m_global_context));
+    else  m_scene_manager.setScene(std::make_unique<GameScene>(m_scene_manager, m_global_context));
 }
 
 Game::~Game() {
@@ -35,7 +35,7 @@ void Game::init() {
 }
 
 void Game::update() {
-    if (WindowShouldClose()) m_is_running = false;
+    if (WindowShouldClose() || m_global_context.quit_flag) m_is_running = false;
     m_scene_manager.update(GetFrameTime());
 
 }
@@ -47,10 +47,6 @@ void Game::render() {
 
 void Game::renderUI() const {
     m_scene_manager.renderUI();
-}
-
-void Game::quitGame() {
-    m_is_running = false;
 }
 
 

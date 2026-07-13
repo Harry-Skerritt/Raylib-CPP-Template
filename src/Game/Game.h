@@ -5,6 +5,8 @@
 #ifndef GAME_H
 #define GAME_H
 #include <raylib.h>
+
+#include "GameContext.h"
 #include "../Managers/SceneManager/SceneManager.h"
 
 class Game {
@@ -18,11 +20,11 @@ public:
     void renderUI() const;
 
     [[nodiscard]] bool isRunning() const { return m_is_running; }
-    void quitGame();
 
 private:
     bool m_is_running = true;
     SceneManager m_scene_manager;
+    GameContext m_global_context;
 
     // --- Loaders ---
     void loadTextures();

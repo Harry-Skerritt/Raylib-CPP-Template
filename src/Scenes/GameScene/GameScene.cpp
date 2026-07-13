@@ -7,17 +7,15 @@
 #include "../../Game/Game.h"
 #include "../../Managers/AssetManager/AssetManager.h"
 
-GameScene::GameScene(SceneManager& manager, Game& game) : Scene(manager, game) {
+GameScene::GameScene(SceneManager& manager, GameContext& context) : Scene(manager, context) {
     m_raylib_texture = AssetManager::GetTexture("raylib-logo");
 }
 
-GameScene::~GameScene() {
-
-}
+GameScene::~GameScene() = default;
 
 
 void GameScene::update(float dt) {
-
+    if (IsKeyPressed(KEY_Q)) m_context.quit_flag = true;
 }
 
 void GameScene::render() {
