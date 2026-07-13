@@ -49,6 +49,11 @@ void Game::renderUI() const {
     m_scene_manager.renderUI();
 }
 
+void Game::quitGame() {
+    m_is_running = false;
+}
+
+
 // Loaders
 void Game::loadTextures() {
     std::cout << "[Game] Loading textures..." << std::endl;

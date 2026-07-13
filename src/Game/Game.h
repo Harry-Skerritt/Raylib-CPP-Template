@@ -18,6 +18,7 @@ public:
     void renderUI() const;
 
     [[nodiscard]] bool isRunning() const { return m_is_running; }
+    void quitGame();
 
 private:
     bool m_is_running = true;
