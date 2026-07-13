@@ -71,6 +71,7 @@ void Splash::update(float dt) {
 }
 
 void Splash::render() {
+    ClearBackground(RAYWHITE);
     if (state == 0)
     {
         if ((framesCounter/15)%2) DrawRectangle(logoPositionX, logoPositionY, 16, 16, BLACK);
