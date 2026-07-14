@@ -8,6 +8,7 @@
 #include "Scene.h"
 #include <raylib.h>
 #include <functional>
+#include <vector>
 
 enum class TransitionType {
     SNAP,
@@ -24,14 +25,18 @@ public:
     ~SceneManager() {
         if (m_transition_target.id != 0) UnloadRenderTexture(m_transition_target);
     }
-    void setScene(std::unique_ptr<Scene> new_scene, TransitionType type = TransitionType::SNAP);
+    void replaceScene(std::unique_ptr<Scene> new_scene, TransitionType type = TransitionType::SNAP);
+    void pushScene(std::unique_ptr<Scene> new_scene, TransitionType type = TransitionType::SNAP);
+    void popScene();
+
     void update(float dt);
     void render() const;
     void renderUI() const;
 
 private:
-    std::unique_ptr<Scene> m_active_scene;
+    std::vector<std::unique_ptr<Scene>> m_scene_stack;
     std::unique_ptr<Scene> m_next_scene;
+    bool m_replace_pending = false;
 
     ManagerState m_state = ManagerState::IDLE;
     TransitionType m_transition_type = TransitionType::SNAP;

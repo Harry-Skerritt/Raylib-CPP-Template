@@ -16,8 +16,20 @@ public:
         sfx_enabled = !sfx_enabled;
     }
 
+    static void SetSFX(const bool enabled) {
+        sfx_enabled = enabled;
+    }
+
     static void ToggleMusic() {
         music_enabled = !music_enabled;
+        if (curr_music != nullptr) {
+            if (music_enabled) PlayMusicStream(*curr_music);
+            else StopMusicStream(*curr_music);
+        }
+    }
+
+    static void SetMusic(const bool enabled) {
+        music_enabled = enabled;
         if (curr_music != nullptr) {
             if (music_enabled) PlayMusicStream(*curr_music);
             else StopMusicStream(*curr_music);

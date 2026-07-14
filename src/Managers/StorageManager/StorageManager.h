@@ -5,9 +5,16 @@
 #ifndef STORAGEMANAGER_H
 #define STORAGEMANAGER_H
 #include "raylib.h"
+#include <cstdlib>
 
 class StorageManager {
 public:
+    static inline bool DoesFileExist(const char* data_file) {
+        int data_size = 0;
+        unsigned char *file_data = LoadFileData(data_file, &data_size);
+        return (file_data != nullptr);
+    }
+
     static inline bool SaveStorageValue(const char* data_file, const unsigned int position, const int value) {
         bool success = false;
         int data_size = 0;

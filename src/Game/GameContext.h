@@ -6,7 +6,8 @@
 #define GAMECONTEXT_H
 
 struct GameContext {
-    bool quit_flag;
+    int target_fps{};
+    bool quit_flag{};
 };
 
 struct StorageContext {

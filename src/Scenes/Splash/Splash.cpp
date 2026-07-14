@@ -17,7 +17,7 @@ Splash::Splash(SceneManager& manager, GameContext& context, const Color bg, cons
 }
 
 Splash::~Splash() {
-    SetTargetFPS(0);
+    SetTargetFPS(m_context.target_fps);
 }
 
 
@@ -70,7 +70,7 @@ void Splash::update(float dt) {
     else if (state == 4)
     {
         if (!transition_started) {
-            m_scene_manager.setScene(std::make_unique<GameScene>(m_scene_manager, m_context), TransitionType::FADE_TO_WHITE);
+            m_scene_manager.replaceScene(std::make_unique<GameScene>(m_scene_manager, m_context), TransitionType::FADE_TO_WHITE);
             transition_started = true;
         }
     }

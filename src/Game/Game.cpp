@@ -13,6 +13,7 @@ Game::Game(const int window_width, const int window_height, const char *window_t
     InitWindow(window_width, window_height, window_title);
     InitAudioDevice();
     SetTargetFPS(target_fps);
+    m_global_context.target_fps = target_fps;
     m_is_running = true;
 
     loadTextures();
@@ -21,17 +22,19 @@ Game::Game(const int window_width, const int window_height, const char *window_t
     loadMusic();
 
     // Load Initial Scene
-    if (use_splash) m_scene_manager.setScene(std::make_unique<Splash>(m_scene_manager, m_global_context));
-    else  m_scene_manager.setScene(std::make_unique<GameScene>(m_scene_manager, m_global_context));
+    if (use_splash) m_scene_manager.replaceScene(std::make_unique<Splash>(m_scene_manager, m_global_context));
+    else  m_scene_manager.replaceScene(std::make_unique<GameScene>(m_scene_manager, m_global_context));
 }
 
 Game::~Game() {
     AssetManager::UnloadAll();
+    CloseAudioDevice();
+    CloseWindow();
 };
 
 
 void Game::init() {
-    std::cout << "[Game] Initializing Game ..." << std::endl;
+    TraceLog(LOG_INFO, "GAME: Initializing Game ...");
 }
 
 void Game::update() {
@@ -52,18 +55,18 @@ void Game::renderUI() const {
 
 // Loaders
 void Game::loadTextures() {
-    std::cout << "[Game] Loading textures..." << std::endl;
+    TraceLog(LOG_INFO, "GAME: Loading textures...");
     AssetManager::LoadTextureKey("raylib-logo", "resources/raylib.png");
 }
 
 void Game::loadFonts() {
-    std::cout << "[Game] Loading fonts ..." << std::endl;
+    TraceLog(LOG_INFO, "GAME: Loading fonts ...");
 }
 
 void Game::loadSounds() {
-    std::cout << "[Game] Loading sounds..." << std::endl;
+    TraceLog(LOG_INFO, "GAME: Loading sounds...");
 }
 
 void Game::loadMusic() {
-    std::cout << "[Game] Loading music..." << std::endl;
+    TraceLog(LOG_INFO, "GAME: Loading music...");
 }

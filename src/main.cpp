@@ -19,8 +19,6 @@ int main() {
         EndDrawing();
     }
 
-    CloseAudioDevice();
     delete game;
-    CloseWindow();
     return 0;
 }
