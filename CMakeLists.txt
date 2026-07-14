@@ -26,6 +26,7 @@ add_executable(${PROJECT_NAME}
         src/Managers/SceneManager/SceneManager.h
         src/Managers/SceneManager/SceneManager.cpp
         src/Managers/StorageManager/StorageManager.h
+        src/Managers/GestureHandler/GestureHandler.h
 
         src/Scenes/Splash/Splash.h
         src/Scenes/Splash/Splash.cpp

@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "raylib.h"
 #include "../Managers/AssetManager/AssetManager.h"
+#include "../Managers/GestureHandler/GestureHandler.h"
 #include "../Scenes/GameScene/GameScene.h"
 #include "../Scenes/Splash/Splash.h"
 
@@ -39,6 +40,7 @@ void Game::init() {
 
 void Game::update() {
     if (WindowShouldClose() || m_global_context.quit_flag) m_is_running = false;
+    GestureHandler::Update();
     m_scene_manager.update(GetFrameTime());
 
 }
